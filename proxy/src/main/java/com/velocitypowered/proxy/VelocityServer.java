@@ -390,7 +390,7 @@ public class VelocityServer implements ProxyServer {
 
       ImmutableList<ConnectedPlayer> players = ImmutableList.copyOf(connectionsByUuid.values());
       for (ConnectedPlayer player : players) {
-        player.disconnect(TextComponent.of("Proxy shutting down."));
+        player.disconnect(TextComponent.of("프록시가 중지되고 있습니다.."));
       }
 
       try {

@@ -344,13 +344,11 @@ public class ConnectedPlayer implements MinecraftConnectionAssociation, Player {
     }
     String userMessage;
     if (connectedServer != null && connectedServer.getServerInfo().equals(server.getServerInfo())) {
-      userMessage = "Your connection to " + server.getServerInfo().getName() + " encountered an "
-          + "error.";
+      userMessage = server.getServerInfo().getName() + " 서버와의 연결에 오류가 발생했습니다.";
     } else {
       logger.error("{}: unable to connect to server {}", this, server.getServerInfo().getName(),
           wrapped);
-      userMessage = "Unable to connect to " + server.getServerInfo().getName() + ". Try again "
-          + "later.";
+      userMessage = server.getServerInfo().getName() + "에 연결할 수 없습니다. 나중에 다시 시도해주세요.";
     }
     handleConnectionException(server, null, TextComponent.of(userMessage, TextColor.RED), safe);
   }
@@ -375,7 +373,7 @@ public class ConnectedPlayer implements MinecraftConnectionAssociation, Player {
       logger.error("{}: kicked from server {}: {}", this, server.getServerInfo().getName(),
           plainTextReason);
       handleConnectionException(server, disconnectReason, TextComponent.builder()
-          .content("Kicked from " + server.getServerInfo().getName() + ": ")
+          .content(server.getServerInfo().getName() + " 서버에서 강제 퇴장되었습니다: ")
           .color(TextColor.RED)
           .append(disconnectReason)
           .build(), safe);
@@ -383,7 +381,7 @@ public class ConnectedPlayer implements MinecraftConnectionAssociation, Player {
       logger.error("{}: disconnected while connecting to {}: {}", this,
           server.getServerInfo().getName(), plainTextReason);
       handleConnectionException(server, disconnectReason, TextComponent.builder()
-          .content("Can't connect to server " + server.getServerInfo().getName() + ": ")
+          .content(server.getServerInfo().getName() + " 서버에 연결할 수 없습니다: ")
           .color(TextColor.RED)
           .append(disconnectReason)
           .build(), safe);

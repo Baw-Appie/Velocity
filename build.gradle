@@ -11,6 +11,10 @@ plugins {
     id 'java'
 }
 
+processResources {
+    filteringCharset 'UTF-8'
+}
+
 allprojects {
     group 'com.velocitypowered'
     version '1.0.8-SNAPSHOT'
